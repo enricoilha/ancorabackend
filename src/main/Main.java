@@ -5,7 +5,6 @@ import menu.EventMenu;
 import menu.UserMenu;
 
 public class Main {
-
 	
 	public static void main(String args[]) {
 		
@@ -37,7 +36,11 @@ public class Main {
 			case 0:
 				loop = false;
 				break;
+			default:
+				loop = false;
+				break;
 			}
+			
 		}
 		
 		scanner.close();

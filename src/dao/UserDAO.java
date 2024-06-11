@@ -37,7 +37,7 @@ public class UserDAO {
 		conexao = GerenciadorBD.obterConexao();
 		PreparedStatement comandoSQL = null;
 		
-		String sql = "";
+		String sql = "select * from users";
 		
 		ArrayList<User> users = new ArrayList<User>();
 		
@@ -47,7 +47,7 @@ public class UserDAO {
 			ResultSet queriedUser = comandoSQL.executeQuery();
 			
 			while(queriedUser.next()) {
-				User usuario = new User(queriedUser.getString("name"), queriedUser.getString("email"));
+				User usuario = new User(queriedUser.getInt("id"),queriedUser.getString("name"), queriedUser.getString("email"));
 				
 				users.add(usuario);
 			}

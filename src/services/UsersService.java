@@ -35,7 +35,8 @@ public class UsersService {
 	  Scanner scanner = new Scanner(System.in);
 	  UserDAO userDAO = new UserDAO();
 	  
-	  
+	  System.out.println("Selecione o id do usuário:");
+
 	  try {
 		  ArrayList<User> users = userDAO.selectAll();
 		  
@@ -43,7 +44,6 @@ public class UsersService {
 			  System.out.println(users.get(i).getId() + " - " + users.get(i).getName());
 		  }
 		  
-		  System.out.println("Selecione o id do usuário:");
 		  String id = scanner.nextLine();
 		  
 		  User user = userDAO.selectSingleUser(Integer.parseInt(id));
@@ -55,7 +55,5 @@ public class UsersService {
 		e.printStackTrace();
 	}
 	  
-	  scanner.close();
-
 	  }
 }
