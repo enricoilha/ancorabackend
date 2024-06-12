@@ -5,9 +5,7 @@ import java.util.Scanner;
 import services.EventsService;
 
 public class EventMenu {
-	
-	public EventMenu() {}
-	
+		
 	public void showEventMenu() {
 		
 		Scanner scanner = new Scanner(System.in);
@@ -20,7 +18,9 @@ public class EventMenu {
 			System.out.println("1 - Criar evento");
 			System.out.println("2 - Selecionar todos os eventos");
 			System.out.println("3 - Selecione evento específico");
-			System.out.println("4 - Deletar evento");
+			System.out.println("4 - Alterar evento");
+			System.out.println("5 - Deletar evento");
+		
 			System.out.println("0 - Sair");
 			
 			String selected = scanner.nextLine();
@@ -37,6 +37,9 @@ public class EventMenu {
 				eventsService.selectSingleEvent();
 				break;
 			case 4:
+				eventsService.updateEvent();
+				break;
+			case 5:
 				eventsService.deleteEvent();
 				break;
 			case 0:

@@ -157,6 +157,29 @@ public class EventDAO {
         return event;
     }
 
+    public void update(Event event) throws SQLException {
+        conexao = GerenciadorBD.obterConexao();
+        PreparedStatement comandoSQL = null;
+
+        String sql = "UPDATE EVENTS SET event_title = ?, event_description = ? WHERE event_id = ?";
+
+        try {
+            comandoSQL = conexao.prepareStatement(sql);
+            comandoSQL.setString(1, event.getTitle());
+            comandoSQL.setString(2, event.getDescription());
+            comandoSQL.setInt(3, event.getId());
+            comandoSQL.executeUpdate();
+
+            System.out.println("Evento alterado com sucesso");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            comandoSQL.close();
+            conexao.close();
+        }
+    }
+
     public void delete(int id) throws SQLException {
         conexao = GerenciadorBD.obterConexao();
         PreparedStatement comandoSQL = null;

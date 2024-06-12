@@ -1,5 +1,6 @@
 package services;
 
+import java.sql.PreparedStatement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -126,6 +127,34 @@ public class EventsService {
 			e.printStackTrace();
 		} finally {
 			scanner.close();
+		}
+	}
+
+	public void updateEvent() {
+		EventDAO eventDAO = new EventDAO();
+		Scanner scanner = new Scanner(System.in);
+
+		try {
+			ArrayList<Event> events = eventDAO.selectAll();
+
+			System.out.println("Digite o ID do evento que deseja alterar: ");
+			for(int i = 0; i < events.size(); i++) {
+				Event event = events.get(i);
+				System.out.println(event.getId() + " - " + event.getTitle());
+			}
+			String id = scanner.nextLine();
+			System.out.println("Digite o novo título: ");
+			String title = scanner.nextLine();
+			System.out.println("Digite a nova descrição: ");
+			String description = scanner.nextLine();
+			Event newEvent = new Event();
+			newEvent.setId(Integer.parseInt(id));
+			newEvent.setTitle(title);
+			newEvent.setDescription(description);
+
+			eventDAO.update(newEvent);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 

@@ -2,6 +2,7 @@ package main;
 import java.util.Scanner;
 
 import menu.EventMenu;
+import menu.MetricMenu;
 import menu.UserMenu;
 
 public class Main {
@@ -10,6 +11,7 @@ public class Main {
 		
 		UserMenu userMenu = new UserMenu();
 		EventMenu eventMenu = new EventMenu();
+		MetricMenu metricMenu = new MetricMenu();
 		
 		Scanner scanner = new Scanner(System.in);
 		boolean loop = true;
@@ -19,6 +21,7 @@ public class Main {
 			System.out.println("Deseja acessar qual menu ?");
 			System.out.println("1 - Usuário ");
 			System.out.println("2 - Evento ");
+			System.out.println("3 - Métricas ");
 			System.out.println("0 - Sair");
 			
 			String opcao = scanner.nextLine();
@@ -32,6 +35,7 @@ public class Main {
 				eventMenu.showEventMenu();
 				break;
 			case 3:
+				metricMenu.showMetricMenu();
 				break;
 			case 0:
 				loop = false;

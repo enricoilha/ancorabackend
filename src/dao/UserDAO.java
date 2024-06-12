@@ -15,7 +15,7 @@ public class UserDAO {
 		conexao = GerenciadorBD.obterConexao();
 		PreparedStatement comandoSQL = null;
 		
-		String sql = "INSERT INTO USERS (id, name, email) values (SQ_USERS.NEXTVAL, ?, ?)";
+		String sql = "INSERT INTO USERS (user_id, user_name, user_email) values (SQ_USERS.NEXTVAL, ?, ?)";
 		
 		try {
 			comandoSQL = conexao.prepareStatement(sql);
@@ -47,7 +47,7 @@ public class UserDAO {
 			ResultSet queriedUser = comandoSQL.executeQuery();
 			
 			while(queriedUser.next()) {
-				User usuario = new User(queriedUser.getInt("id"),queriedUser.getString("name"), queriedUser.getString("email"));
+				User usuario = new User(queriedUser.getInt("user_id"),queriedUser.getString("user_name"), queriedUser.getString("user_email"));
 				
 				users.add(usuario);
 			}
@@ -68,7 +68,7 @@ public class UserDAO {
 		conexao = GerenciadorBD.obterConexao();
 		PreparedStatement comandoSQL = null;
 		
-		 String sql = "SELECT * FROM Users WHERE id = ?";
+		 String sql = "SELECT * FROM Users WHERE user_id = ?";
 	     User user = new User();
 	     
 	     try {
@@ -78,9 +78,9 @@ public class UserDAO {
 	    	 ResultSet usuario = comandoSQL.executeQuery();
 	    	 
 	    	 if(usuario.next()) {
-	    		 user.setId(usuario.getInt("id"));
-	    		 user.setName(usuario.getString("name"));
-	    		 user.setEmail(usuario.getString("email"));
+	    		 user.setId(usuario.getInt("user_id"));
+	    		 user.setName(usuario.getString("user_name"));
+	    		 user.setEmail(usuario.getString("user_email"));
 	    	 }
 	    	 
 		} catch (SQLException e) {
@@ -99,7 +99,7 @@ public class UserDAO {
 	        conexao = GerenciadorBD.obterConexao();
 			PreparedStatement comandoSQL = null;
 			
-	        String sql = "UPDATE Users SET name = ?, email = ? WHERE id = ?";
+	        String sql = "UPDATE Users SET user_name = ?, user_email = ? WHERE user_id = ?";
 
 	        try  {
 	        	comandoSQL = conexao.prepareStatement(sql);
@@ -124,7 +124,7 @@ public class UserDAO {
 	 		conexao = GerenciadorBD.obterConexao();
 			PreparedStatement comandoSQL = null;
 			
-	        String sql = "DELETE FROM Users WHERE id = ?";
+	        String sql = "DELETE FROM Users WHERE user_id = ?";
 
 	        try {
 

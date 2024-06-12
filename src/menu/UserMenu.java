@@ -6,9 +6,7 @@ import services.UsersService;
 
 
 public class UserMenu {
-	
-	public UserMenu() {}
-	
+		
 	public void ShowUserMenu() {
 		Scanner scanner = new Scanner(System.in);
 		UsersService usersService = new UsersService();
