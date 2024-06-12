@@ -18,17 +18,31 @@ public class EventMenu {
 			
 			System.out.println("O que deseja?");
 			System.out.println("1 - Criar evento");
+			System.out.println("2 - Selecionar todos os eventos");
+			System.out.println("3 - Selecione evento específico");
+			System.out.println("4 - Deletar evento");
+			System.out.println("0 - Sair");
 			
 			String selected = scanner.nextLine();
 			
 			switch (Integer.parseInt(selected)) {
 			
 			case 1:
-				
 				eventsService.createNewEvent();
 				break;
+			case 2:
+			  eventsService.selectAllEvents();
+			  break;
+			case 3:
+				eventsService.selectSingleEvent();
+				break;
+			case 4:
+				eventsService.deleteEvent();
+				break;
+			case 0:
+				loop = false;
+				break;
 			default:
-				
 				loop = false;
 				break;
 			}
